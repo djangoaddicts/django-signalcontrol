@@ -13,7 +13,7 @@ class UserRecentsMiddleware(MiddlewareMixin):
 
     def process_request(self, request):
         """ """
-        # define the number of recent urls to track
+        # set the number of recent urls to track
         max_history = 10
 
         # do not track url if user is not authenticated
@@ -22,23 +22,22 @@ class UserRecentsMiddleware(MiddlewareMixin):
         user = getattr(request, 'user')
         if not user:
             return
+
+        # do not track if url (full path) can not be determined
         path = getattr(request, 'get_full_path')()
         if not path:
             return
 
-        print("PATH: ", path)
-
+        # do not track admin or debug urls
         skip_url_prefix_list = ['/admin/', '/__debug__/']
         for prefix in skip_url_prefix_list:
             if path.startswith(prefix):
-                print("SKIPPING: ", path)
                 return
 
         # do not track urls in the skip_fixed_url_list
-        skip_fixed_url_list = ['/', '/admin/', '/login/', '/logout/', '/__debug__/']
+        skip_fixed_url_list = ['/', '/login/', '/logout/', ]
         for url in skip_fixed_url_list:
             if path == url:
-                print("SKIPPING: ", path)
                 return
 
         # todo: validate that url is valid; exit out if not
