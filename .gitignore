@@ -102,3 +102,27 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+
+# Django stuff:
+*.log
+django_project/staticroot/*
+django_project/static/*
+db.sqlite3
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+target/
+
+# Project Specific
+*.idea
+local_test
+local_test/*
+*.iml
+
+
+
+# Apple garbage
+*.DS_Store
