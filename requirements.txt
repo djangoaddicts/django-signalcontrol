@@ -1,2 +1,4 @@
-django
-django-handyhelpers
+django==2.0.5
+django-brances==1.13.0
+django-handyhelpers==0.0.7
+djangorestframework==3.9.4
