@@ -11,3 +11,6 @@ __version__ = '0.0.1'
 __author__ = 'David Slusser'
 __license__ = 'GPL-3.0'
 __copyright__ = 'Copyright 2019 David Slusser'
+
+
+default_app_config = 'userprofile.apps.UserprofileConfig'
