@@ -8,7 +8,7 @@ import django.db.models.deletion
 def add_user_preferences(apps, schema_editor):
     """ add UserPreference entry for each existing user """
     User = apps.get_model('auth', 'User')
-    UserPreference = apps.get_model('userprofile', 'UserPreference')
+    UserPreference = apps.get_model('userextensions', 'UserPreference')
     for user in User.objects.all():
         UserPreference.objects.create(user=user)
 
@@ -54,7 +54,7 @@ class Migration(migrations.Migration):
                 ('updated_at', models.DateTimeField(auto_now=True, help_text='date/time this row was last updated')),
                 ('recents_count', models.IntegerField(blank=True, default=25, help_text='number of recents to keep a record of', null=True)),
                 ('page_refresh_time', models.IntegerField(blank=True, default=5, help_text='time, in minutes, to auto-refresh a page (where applicable', null=True)),
-                ('theme', models.ForeignKey(blank=True, help_text='theme to use for web pages', null=True, on_delete=django.db.models.deletion.CASCADE, to='userprofile.Theme')),
+                ('theme', models.ForeignKey(blank=True, help_text='theme to use for web pages', null=True, on_delete=django.db.models.deletion.CASCADE, to='userextensions.Theme')),
                 ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='preference', to=settings.AUTH_USER_MODEL)),
             ],
             options={
