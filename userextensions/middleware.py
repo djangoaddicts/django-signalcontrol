@@ -13,7 +13,7 @@ except ImportError:
     MiddlewareMixin = object
 
 # import models
-from userprofile.models import UserRecent
+from userextensions.models import UserRecent
 
 
 class UserRecentsMiddleware(MiddlewareMixin):
@@ -21,12 +21,15 @@ class UserRecentsMiddleware(MiddlewareMixin):
 
     def process_request(self, request):
         """ read uers and url (path) from request, if valid and not in a skip list, add to user's recents """
+        # only track specified methods
+        track_method_list = getattr(settings, 'TRACK_METHOD_LIST', ['GET'])
+        if request.method not in track_method_list:
+            return
 
         # do not track url if user is not authenticated
         if not request.user.is_authenticated:
             return
-        user = getattr(request, 'user')
-        if not user:
+        if not getattr(request, 'user'):
             return
 
         # do not track if url (full path) can not be determined
@@ -53,9 +56,9 @@ class UserRecentsMiddleware(MiddlewareMixin):
             return
 
         # add recent
-        UserRecent.objects.get_or_create(url=request.get_full_path(),
-                                         user=request.user,
-                                         defaults=dict(url=request.get_full_path(),
-                                                       user=request.user,
-                                                       updated_at=timezone.now())
-                                         )
+        UserRecent.objects.update_or_create(url=request.get_full_path(),
+                                            user=request.user,
+                                            defaults=dict(url=request.get_full_path(),
+                                                          user=request.user,
+                                                          updated_at=timezone.now())
+                                            )

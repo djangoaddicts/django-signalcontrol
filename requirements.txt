@@ -1,4 +1,4 @@
 django>=2.0.12
-django-brances==1.13.0
-django-handyhelpers==0.0.7
+django-braces==1.13.0
+django-handyhelpers>=0.0.7
 djangorestframework==3.9.4

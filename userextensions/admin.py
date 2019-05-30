@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # import models
-from userprofile.models import (Theme, UserFavorite, UserPreference, UserRecent)
+from userextensions.models import (Theme, UserFavorite, UserPreference, UserRecent)
 
 
 class ThemeAdmin(admin.ModelAdmin):
