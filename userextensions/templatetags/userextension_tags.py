@@ -1,7 +1,7 @@
 from django import template
 
 # import models
-from userextensions.models import UserFavorite
+from userextensions.models import UserFavorite, UserPreference
 
 register = template.Library()
 
@@ -16,5 +16,18 @@ def is_favorite(request):
             return favorite.id
         else:
             return False
+    except:
+        return None
+
+
+@register.simple_tag(name='get_theme')
+def get_theme(request):
+    try:
+        user = request.user
+        preference = UserPreference.objects.get_object_or_none(user=user)
+        if preference:
+            return preference.theme
+        else:
+            return None
     except:
         return None
