@@ -16,7 +16,7 @@ setup(
     description='A user extension module for django',
     #long_description=README,
     url='https://github.com/davidslusser/django-userextensions',
-    download_url='https://github.com/davidslusser/django-userextensions/archive/0.0.1.tar.gz',
+    download_url='https://github.com/davidslusser/django-userextensions/archive/0.0.2.tar.gz',
     keywords=['django', 'helpers', 'extension', 'user', 'profile'],
     classifiers=[],
     install_requires=[
