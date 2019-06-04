@@ -14,7 +14,7 @@ Installation
 ------------
 - pip install django-userextensions
 - add django-userextensions to your INSTALLED_APPS
-- to include recents tracing, add 'userextensions.middleware.UserRecentsMiddleware' to your middleware
+- to include recents tracking, add 'userextensions.middleware.UserRecentsMiddleware' to your middleware
 - to include views to manage favorites and recents, in the project-level urls.py file add the following to your urls.py:
     from userextensions.urls import *
     path('', include('userextensions.urls'), ), 
