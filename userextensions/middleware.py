@@ -20,7 +20,7 @@ class UserRecentsMiddleware(MiddlewareMixin):
     """ add url to user recents on page request """
 
     def process_request(self, request):
-        """ read uers and url (path) from request, if valid and not in a skip list, add to user's recents """
+        """ read users and url (path) from request, if valid and not in a skip list, add to user's recents """
         # only track specified methods
         track_method_list = getattr(settings, 'TRACK_METHOD_LIST', ['GET'])
         if request.method not in track_method_list:
