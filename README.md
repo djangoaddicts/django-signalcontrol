@@ -1,6 +1,6 @@
 django-userprofile
 ===============
-A user extension module for django. This includes some basic uer profile settings and 
+A user extension module for django. This includes some basic user profile settings and 
 tracking of a users favorites and recently visited urls within the project. 
 
 
