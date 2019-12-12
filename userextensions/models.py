@@ -35,6 +35,7 @@ class UserPreference(UserExtensionBaseModel):
                                         help_text="number of recents to keep a record of")
     page_refresh_time = models.IntegerField(default=5, blank=True, null=True,
                                             help_text="time, in minutes, to auto-refresh a page (where applicable")
+    start_page = models.CharField(max_length=255, blank=True, null=True, help_text="url to redirect to after user login")
 
     def __str__(self):
         return self.user.username

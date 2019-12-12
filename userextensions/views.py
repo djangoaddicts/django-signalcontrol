@@ -9,7 +9,7 @@ from rest_framework.authtoken.models import Token
 from braces.views import LoginRequiredMixin
 
 # import models
-from userextensions.models import (UserRecent, UserFavorite)
+from userextensions.models import (UserRecent, UserFavorite, UserPreference)
 
 
 class RefreshApiToken(LoginRequiredMixin, View):
@@ -72,3 +72,39 @@ class DeleteRecent(LoginRequiredMixin, DeleteView):
         UserRecent.objects.filter(**kwargs).delete()
         messages.add_message(self.request, messages.INFO, "Recent successfully deleted", extra_tags='alert-info')
         return redirect(self.request.META.get('HTTP_REFERER'))
+
+
+class UserLoginRedirect(LoginRequiredMixin, View):
+    """ check if a user has a preferred 'start page' to reach after login; redirect to that page after login else
+        redirect to the project root page
+        to enable this redirect, set the LOGIN_REDIRECT_URL in the settings.py to /userextensions/user_login_redirect
+        and include userextensions.urls in the project-level urls.py
+    """
+    def get(self, request):
+        # get the users preferred start page
+        try:
+            start_page = request.user.preference.start_page
+            if start_page:
+                return redirect(start_page)
+        except:
+            return redirect("/")
+
+
+class SetStartPage(LoginRequiredMixin, View):
+    """ set the current page as the users preferred 'start page' to be redirected to after login """
+    def post(self, request):
+        referrer = self.request.META.get('HTTP_REFERER')
+        try:
+            # do not set start page if user is not authenticated or user can not be determined
+            if not request.user.is_authenticated:
+                return redirect(referrer)
+
+            # set current url as start page
+            request.user.preference.start_page = referrer
+            request.user.preference.save()
+            messages.add_message(request, messages.INFO, "start page updated!", extra_tags='alert-info')
+        except Exception as err:
+            messages.add_message(request, messages.ERROR, "Error setting start page: {}".format(err),
+                                 extra_tags='alert-danger')
+        return redirect(referrer)
+
