@@ -1,6 +1,7 @@
 """
-
+shared views to facilitate user preference actions
 """
+
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.utils import timezone
@@ -75,10 +76,10 @@ class DeleteRecent(LoginRequiredMixin, DeleteView):
 
 
 class UserLoginRedirect(LoginRequiredMixin, View):
-    """ check if a user has a preferred 'start page' to reach after login; redirect to that page after login else
-        redirect to the project root page
-        to enable this redirect, set the LOGIN_REDIRECT_URL in the settings.py to /userextensions/user_login_redirect
-        and include userextensions.urls in the project-level urls.py
+    """ Check if a user has a preferred 'start page' to load after login. I so, redirect to that page after login, else
+        redirect to the project root page.
+        To enable this redirect, set the LOGIN_REDIRECT_URL parameter in the settings.py to
+        /userextensions/user_login_redirect and include userextensions.urls in the project level urls.py
     """
     def get(self, request):
         # get the users preferred start page
@@ -86,7 +87,9 @@ class UserLoginRedirect(LoginRequiredMixin, View):
             start_page = request.user.preference.start_page
             if start_page:
                 return redirect(start_page)
-        except:
+        except Exception as err:
+            messages.add_message(request, messages.ERROR, "Error getting start page; redirect to root".format(err),
+                                 extra_tags='alert-danger')
             return redirect("/")
 
 

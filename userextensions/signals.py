@@ -27,7 +27,7 @@ def trim_recents(sender, instance, created, **kwargs):
     except:
         recents_count = 25
 
-    # don't need to trip if recents count is < recents_count
+    # don't need to trim if recents count is < recents_count
     if UserRecent.objects.filter(user=instance.user).count() <= recents_count:
         return
     recent_id_list = UserRecent.objects.filter(user=instance.user
