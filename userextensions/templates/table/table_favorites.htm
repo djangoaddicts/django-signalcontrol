@@ -1,0 +1,28 @@
+<table class="table table-condensed table-bordered table-striped" data-toggle="table" data-search="true"
+       data-flat="true" data-pagination="true" data-show-pagination-switch="true" data-show-columns="true"
+       data-show-export="true" data-reorderable-columns="true" data-resizable="false" data-export-types="['excel','csv','txt','sql']">
+    <thead>
+        <tr>
+            <th data-field="name" data-sortable="true">Name</th>
+            <th data-field="url" data-sortable="true">URL</th>
+            <th data-field="created_at" data-sortable="true">Last Visited</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for row in queryset %}
+        <tr>
+            <td>{{ row.name }}</td>
+            <td><a href="{{ row.url }}">{{ row.url }}</a></td>
+            <td>{{ row.updated_at }}</td>
+
+            <!-- actions -->
+            <td>
+                <a href="#" onClick="confirmAction('{% url "userextensions:delete_favorite" row.pk %}', 'Delete Favorite', 'This favorite will be permanently removed from your list of favorites; do you wish to continue?', 'Continue', 'POST');">
+                    <i class="fas fa-trash mr-3"></i>
+                </a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
