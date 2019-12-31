@@ -7,7 +7,7 @@ A user extension module for django.
 """
 
 __title__ = 'django-userextensions'
-__version__ = '0.0.3'
+__version__ = '0.0.4'
 __author__ = 'David Slusser'
 __license__ = 'GPL-3.0'
 __copyright__ = 'Copyright 2019 David Slusser'

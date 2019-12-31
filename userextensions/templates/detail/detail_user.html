@@ -1,0 +1,168 @@
+{% extends base_template|default:"userextensions_base.htm" %}
+{% load staticfiles %}
+
+{% block content %}
+    <div class="container-fluid mb-4 animated fadeIn">
+        <h1><span class="text-primary"><b>User Profile: </b></span><span class="text-secondary"><small>{{ user.username }}</small></span></h1><br/>
+    </div><br/>
+
+    <div class="container mb-4 animated fadeIn" style="animation-delay: .25s;"> <!-- user details -->
+        <div class="row">
+            <div class="col-sm-2"><i class="far fa-address-card fa-5x text-primary"></i></div>
+            <div class="col-sm-10">
+
+                <!-- is active -->
+                <div class="row border-bottom border-light p-2">
+                    <div class="col-sm-4">
+                        <span class="text-primary"><b>Is Active:</b></span>
+                    </div>
+                    <div class="col-sm-8">
+                        {% if user.is_active %}
+                            <span class="badge badge-pill badge-primary"><i class="fa fa-check fa-fw"></i></span>
+                        {% else %}
+                            <span class="badge badge-pill badge-danger"><i class="fa fa-times fa-fw"></i></span>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- is staff -->
+                <div class="row border-bottom border-light p-2">
+                    <div class="col-sm-4">
+                        <span class="text-primary"><b>Is Staff:</b></span>
+                    </div>
+                    <div class="col-sm-8">
+                        {% if user.is_staff %}
+                            <span class="badge badge-pill badge-primary"><i class="fa fa-check fa-fw"></i></span>
+                        {% else %}
+                            <span class="badge badge-pill badge-danger"><i class="fa fa-times fa-fw"></i></span>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- is superuser -->
+                <div class="row border-bottom border-light p-2">
+                    <div class="col-sm-4">
+                        <span class="text-primary"><b>Is Superuser:</b></span>
+                    </div>
+                    <div class="col-sm-8">
+                        {% if user.is_superuser %}
+                            <span class="badge badge-pill badge-primary"><i class="fa fa-check fa-fw"></i></span>
+                        {% else %}
+                            <span class="badge badge-pill badge-danger"><i class="fa fa-times fa-fw"></i></span>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- date joined -->
+                <div class="row border-bottom border-light p-2">
+                    <div class="col-sm-4">
+                        <span class="text-primary"><b>Date Joined:</b></span>
+                    </div>
+                    <div class="col-sm-8">
+                        {{ user.date_joined }}
+                    </div>
+                </div>
+
+                <!-- api token -->
+                <div class="row border-bottom border-light p-2">
+                    <div class="col-sm-4">
+                        <span class="text-primary"><b>API Token:</b></span>
+                    </div>
+                        <div class="col-sm-8">
+                        {{ token }} &nbsp;&nbsp;
+                        <a href="#" class="atmo-link-padding atmo-link-text" title="refresh token"
+                              onClick="confirmAction('{% url "userextensions:refresh_api_token" %}', 'Update Token', 'This will delete your API token and create a new one. Do you wish to continue?', 'Continue', 'POST');"
+                              role="button" data-toggle="tooltip" data-placement="left">
+                            <i class="fas fa-sync-alt"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="m-4">&nbsp;</div>
+    <div class="container mb-4 animated fadeIn" style="animation-delay: .5s;"> <!-- settings -->
+        <div class="row">
+            <div class="col-sm-2"><i class="fas fa-cogs fa-5x text-primary"></i></div>
+            <div class="col-sm-10">
+                <div class="row border-bottom border-light p-2">
+                    <div class="col-sm-4">
+                        <span class="text-primary"><b>Theme:</b></span>
+                    </div>
+                    <div class="col-sm-8">
+                        {{ user.preference.theme }}
+                    </div>
+                </div>
+                <div class="row border-bottom border-light p-2">
+                    <div class="col-sm-4">
+                        <span class="text-primary"><b>Recents Count:</b></span>
+                    </div>
+                    <div class="col-sm-8">
+                        {{ user.preference.recents_count }}
+                    </div>
+                </div>
+                <div class="row border-bottom border-light p-2">
+                    <div class="col-sm-4">
+                        <span class="text-primary"><b>Start Page:</b></span>
+                    </div>
+                    <div class="col-sm-8">
+                        {{ user.preference.start_page }}
+                    </div>
+                </div>
+                <div class="row border-bottom border-light p-2">
+                    <div class="col-sm-4">
+                        <span class="text-primary"><b>Page Refresh:</b></span>
+                    </div>
+                    <div class="col-sm-8">
+                        {{ user.preference.page_refresh_time }}
+                    </div>
+                </div>
+                <div class="row p-2">
+                    <div class="col-sm-4"><span class="text-primary"><b>Edit:</b></span></div>
+                    <div class="col-sm-8">
+                        <a href="#" class="no-underline" data-toggle="modal" data-target="#modal_{{ form_data_user_preferences.modal_name }}">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="m-4">&nbsp;</div>
+    <div class="container mb-4 animated fadeIn" style="animation-delay: .75s;"> <!-- group memberships -->
+        <div class="row">
+            <div class="col-sm-2"><i class="fas fa-users fa-5x text-primary"></i></div>
+            <div class="col-sm-10">
+                <div class="row border-bottom border-light p-2">
+                    <div class="col-sm-4">
+                        <span class="text-primary"><b>Group Memberships:</b></span>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="row">
+                            {% if groups %}
+                                {% for group in groups %}
+                                    <div class="col-sm-12 col-md-8 col-lg-4">{{ group }}</div>
+                                {% endfor %}
+                            {% else %}
+                                <div>no group memberships found</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    {% with form_data_user_preferences as form_data %}
+        {% include 'generic/generic_modal_form.htm' %}
+    {% endwith %}
+
+    <div class="m-5">&nbsp;</div>
+    {% include 'component/modals.htm' %}
+{% endblock %}

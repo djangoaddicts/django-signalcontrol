@@ -1,0 +1,13 @@
+{#
+This snippet allows customizing the theme (css file) as defined per user in the UserPreference model theme field.
+Include this snippet within the head tags of your base template:
+<head>{% include 'snippits/user_theme.htm' %}</head>
+#}
+
+{% get_theme request as user_theme %}
+{% if user_theme %}
+<link href="{% static user_theme.css_file %}" rel="stylesheet">
+{% else %}
+<link href="{% static 'default.css' %}" rel="stylesheet">
+{% endif %}
+<link href="{% static 'nexthost_base.css' %}" rel="stylesheet">

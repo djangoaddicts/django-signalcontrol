@@ -4,6 +4,14 @@ from userextensions import views
 app_name = "userextensions"
 
 urlpatterns = [
+
+    # list views
+    path('list_recents/', views.ListRecents.as_view(), name='list_recents'),
+    path('list_favorites/', views.ListFavorites.as_view(), name='list_favorites'),
+
+    # detail views
+    path('detail_user/', views.DetailUser.as_view(), name='detail_user'),
+
     # create views
     path('add_favorite/', views.AddFavorite.as_view(), name='add_favorite'),
 
