@@ -125,6 +125,7 @@ class ListRecents(LoginRequiredMixin, FilterByQueryParamsMixin, ListView):
         context = dict()
         self.queryset = UserRecent.objects.filter(user=request.user).order_by('-updated_at')
         template = "generic/generic_list.html"
+        context['base_template'] = self.base_template
         context['queryset'] = self.filter_by_query_params()
         context['title'] = "Recents"
         context['sub_title'] = request.user.username
@@ -140,6 +141,7 @@ class ListFavorites(LoginRequiredMixin, FilterByQueryParamsMixin, ListView):
         context = dict()
         self.queryset = UserFavorite.objects.filter(user=request.user).order_by('-updated_at')
         template = "generic/generic_list.html"
+        context['base_template'] = self.base_template
         context['queryset'] = self.filter_by_query_params()
         context['title'] = "Favorites"
         context['sub_title'] = request.user.username
