@@ -28,7 +28,7 @@ setup(
     install_requires=required,
     classifiers=[
         'Environment :: Web Environment',
-        'Framework :: Django :: 2.2+',
+        'Framework :: Django :: 2.2.x',
         'Intended Audience :: Developers',
         'Operating System :: OS Independent',
         'Programming Language :: Python :: 3',
