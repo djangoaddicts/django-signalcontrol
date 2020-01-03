@@ -1,5 +1,5 @@
 .. django-userextensions documentation master file, created by
-   sphinx-quickstart on Thu Jan  2 15:53:04 2020.
+   sphinx-quickstart on Fri Jan  3 11:12:07 2020.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
@@ -30,4 +30,10 @@ Indices and tables
    license
    version_history
 
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
 * :ref:`search`
