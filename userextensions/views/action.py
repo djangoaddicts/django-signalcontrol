@@ -15,7 +15,7 @@ from userextensions.models import (UserRecent, UserFavorite)
 
 
 class RefreshApiToken(LoginRequiredMixin, View):
-    """ delete current user token and create a new one """
+    """ delete current user API (auth) token and create a new one """
     def post(self, request):
         try:
             token = Token.objects.get(user=request.user)

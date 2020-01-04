@@ -17,10 +17,24 @@ from userextensions.models import UserRecent
 
 
 class UserRecentsMiddleware(MiddlewareMixin):
-    """ add url to user recents on page request """
+    """ This middleware parses data from requests and, where applicable, stores the full url path in the request to the
+    users list of recently viewed pages (recents). No recents will be stored if the user is not authenticated, user can
+    not be determined, or if the URL is invalid.
 
+    Tracking can be filtered byt methods, URL prefixes, and static URLs
+    via parameters in the settings.py file. The following are configurable:
+
+        method: tracks only specified methods; defaults to GET
+                TRACK_METHOD_LIST = ['GET', ]
+
+        URL prefixes: will not track URLs that start with the specified prefixes
+                SKIP_URL_PREFIX_LIST = ['/admin/', '/__debug__/']
+
+        static URLs: will not track the specified URLs
+                SKIP_FIXED_URL_LIST = ['/', '/login/', '/logout/', ]
+    """
     def process_request(self, request):
-        """ read users and url (path) from request, if valid and not in a skip list, add to user's recents """
+        """ read user and url (path) from request, if valid and not in a skip list, add to recents """
         # only track specified methods
         track_method_list = getattr(settings, 'TRACK_METHOD_LIST', ['GET'])
         if request.method not in track_method_list:
