@@ -9,14 +9,15 @@ from userextensions.models import (UserPreference, UserRecent)
 
 @receiver(post_save, sender=User, dispatch_uid="add_user_preference")
 def add_user_preference(sender, instance, created, **kwargs):
-    """ add user preference object when a User is added """
+    """ This post-save signal adds a UserPreference object when a User is created """
     if created:
         UserPreference.objects.create(user=instance)
 
 
 @receiver(post_save, sender=UserRecent, dispatch_uid="trim_recents")
 def trim_recents(sender, instance, created, **kwargs):
-    """ trim the recents list for a user to only maintain the x most recent urls """
+    """ This post-save signal trims a users recents to only maintain the x most recent urls, where x is the
+    recents_count configured in the UserPreference table """
     # do not execute signal when running tests
     if 'manage.py' in sys.argv[0] and 'test' in sys.argv:
         return

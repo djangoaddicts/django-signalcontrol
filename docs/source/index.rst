@@ -1,39 +1,16 @@
-.. django-userextensions documentation master file, created by
-   sphinx-quickstart on Fri Jan  3 11:12:07 2020.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
-Welcome to django-userextensions's documentation!
-=================================================
+django-userextensions's documentation
+=====================================
 
 
-About
-=====
-A user extension module for django. This includes some basic user profile settings and tracking of a users favorites and recently visited urls within the project.
-
-
-Requirements & Dependancies
-===========================
-
-django-userextensions uses Python 3.6.x and Django 2.2.x. For a full list of packages and requirements, please see the requirements.txt file.
-
-
-Indices and tables
-==================
+Contents
+========
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
 
+   about
    installation
    features
-   license
+   internals
    version_history
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+   license

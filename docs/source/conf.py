@@ -12,21 +12,28 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-# import os
-# import sys
-# sys.path.insert(0, os.path.abspath('.'))
+import os
+import sys
+import datetime
+import django
+sys.path.insert(0, os.path.abspath('../../'))
+
+# Django settings
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'userextensions_tests.userextensions_tests.settings')
+django.setup()
+import userextensions
 
 
 # -- Project information -----------------------------------------------------
 
-project = 'django-userextensions'
-copyright = '2020, David Slusser'
-author = 'David Slusser'
+project = userextensions.__title__
+copyright = '{}, {}'.format(datetime.datetime.now().year, userextensions.__author__)
+author = userextensions.__author__
 
 # The short X.Y version
-version = ''
+version = userextensions.__version__
 # The full version, including alpha/beta/rc tags
-release = '1.0.0'
+release = userextensions.__version__
 
 
 # -- General configuration ---------------------------------------------------
@@ -40,6 +47,7 @@ release = '1.0.0'
 # ones.
 extensions = [
     'sphinx.ext.autodoc',
+    'sphinx.ext.viewcode',
     'recommonmark',
 ]
 
@@ -76,7 +84,7 @@ pygments_style = None
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'alabaster'
+html_theme = "sphinx_rtd_theme"
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -131,7 +139,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'django-userextensions.tex', 'django-userextensions Documentation',
-     'David Slusser', 'manual'),
+     userextensions.__author__, 'manual'),
 ]
 
 

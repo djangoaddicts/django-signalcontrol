@@ -18,7 +18,9 @@ from userextensions.forms import UserPreferenceForm
 
 
 class ListRecents(LoginRequiredMixin, FilterByQueryParamsMixin, ListView):
-    """ display a list of urls the user has recently visited """
+    """ Displays a list of urls the user has recently visited, rendered in a paginated, searchable, sortable bootstrap
+    table. This view is filterable via query parameters. Includes links to delete individual entries.
+    """
     base_template = settings.BASE_TEMPLATE
 
     def get(self, request, *args, **kwargs):
@@ -34,7 +36,8 @@ class ListRecents(LoginRequiredMixin, FilterByQueryParamsMixin, ListView):
 
 
 class ListFavorites(LoginRequiredMixin, FilterByQueryParamsMixin, ListView):
-    """ display a list of user defined favorites """
+    """ Displays a list of urls user has set as favorites, rendered in a paginated, searchable, sortable bootstrap
+    table. This view is filterable via query parameters. Includes links to delete individual entries. """
     base_template = settings.BASE_TEMPLATE
 
     def get(self, request, *args, **kwargs):
@@ -50,7 +53,8 @@ class ListFavorites(LoginRequiredMixin, FilterByQueryParamsMixin, ListView):
 
 
 class DetailUser(LoginRequiredMixin, View):
-    """ show user profile """
+    """ Displays user details, including group configuration, API token, and configuration for theme, start page, and
+    recents count. Includes link to refresh API token and modal form to edit user preferences. """
     base_template = settings.BASE_TEMPLATE
     template = "detail/detail_user.html"
 
