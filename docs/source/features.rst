@@ -10,10 +10,14 @@ This document details the features currently available in django-userextensions.
 log-in redirect
 ---------------
 Users can define a specific page to be routed to after login. This is set in the UserPreference model with the
-start_page field. When configured, the page specified will be displayed after the user logs in. If no start_page is set,
-the project root will be displayed after login. Start page can be set using the ``SetStartPage`` view, available via the
-``userextensions:set_start_page`` URL. When called, the referred URL will be set as the users start page. To
-enable this feature, ensure the three configuration steps below.
+start_page field. When configured, the page specified will be displayed after the user logs in. If no start_page for
+the user is set, the value set in the ``LOGIN_REDIRECT_URL_DEFAULT`` parameter in settings.py will be used. If the
+LOGIN_REDIRECT_URL_DEFAULT is not set, the project root ``'/'`` will be used.
+the project root will be displayed after login.
+
+Start page can be set using the ``SetStartPage`` view, available via the
+``userextensions:set_start_page`` URL. When called, the referred URL will be set as the users start page. To enable
+this feature, ensure the three configuration steps below.
 
 1. add 'userextensions' to the INSTALLED_APPS:
 
@@ -30,6 +34,7 @@ enable this feature, ensure the three configuration steps below.
 .. code-block:: python
 
     LOGIN_REDIRECT_URL = '/userextensions/user_login_redirect'
+    LOGIN_REDIRECT_URL_DEFAULT = '/'
 ..
 
 

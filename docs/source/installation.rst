@@ -76,9 +76,12 @@ project-level urls.py file.
     BASE_TEMPLATE = 'location_of_your_base_template'
 ..
 
-To allow the custom user start page, update the LOGIN_REDIRECT_URL in your settings.py file to point to the userextensions user_login_redirect view.
+To allow the custom user start page, update the ``LOGIN_REDIRECT_URL`` parameter in your settings.py file to point to
+the userextensions user_login_redirect view. Optionally, the ``LOGIN_REDIRECT_URL_DEFAULT`` parameter can be set to
+define the page redirected to when a user does not have a start page configured.
 
 .. code-block:: python
 
     LOGIN_REDIRECT_URL = '/userextensions/user_login_redirect'
+    LOGIN_REDIRECT_URL_DEFAULT = 'myapp/some_cool_page'
 ..
