@@ -5,6 +5,7 @@ page rendering views are contained here.
 
 from django.shortcuts import redirect
 from django.contrib import messages
+from django.conf import settings
 from django.utils import timezone
 from django.views.generic import View, DeleteView
 from rest_framework.authtoken.models import Token
@@ -89,6 +90,8 @@ class UserLoginRedirect(LoginRequiredMixin, View):
             start_page = request.user.preference.start_page
             if start_page:
                 return redirect(start_page)
+            else:
+                return redirect(getattr(settings, 'LOGIN_REDIRECT_URL_DEFAULT', '/'))
         except Exception as err:
             messages.add_message(request, messages.ERROR, "Error getting start page; redirect to root".format(err),
                                  extra_tags='alert-danger')
