@@ -20,7 +20,7 @@ class Theme(UserExtensionBaseModel):
     """ This model tracks themes. It can be used to provide user preferred frontend styling options based on
     defined css files. """
     name = models.CharField(max_length=32, unique=True, help_text="name of theme")
-    css_file = models.CharField(max_length=32, unique=True, blank=True, null=True,
+    css_file = models.CharField(max_length=255, unique=True, blank=True, null=True,
                                 help_text="path to css file for theme")
 
     def __str__(self):

@@ -59,7 +59,8 @@ class UserRecentsMiddleware(MiddlewareMixin):
 
         # do not track urls in the skip_fixed_url_list
         skip_fixed_url_list = getattr(settings, 'SKIP_FIXED_URL_LIST', ['/', '/login/', '/logout/',
-                                                                        '/userextensions/list_recents/'])
+                                                                        '/userextensions/list_recents/',
+                                                                        '/userextensions/user_login_redirect/'])
         for url in skip_fixed_url_list:
             if path == url:
                 return
