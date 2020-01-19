@@ -1,4 +1,4 @@
-{% extends base_template|default:"userextensions_base.htm" %}
+{% extends base_template|default:"userextensions/userextensions_base.htm" %}
 {% load staticfiles %}
 
 {% block content %}
@@ -160,9 +160,9 @@
 
 
     {% with form_data_user_preferences as form_data %}
-        {% include 'generic/generic_modal_form.htm' %}
+        {% include 'handyhelpers/generic/generic_modal_form.htm' %}
     {% endwith %}
 
     <div class="m-5">&nbsp;</div>
-    {% include 'component/modals.htm' %}
+    {% include 'handyhelpers/component/modals.htm' %}
 {% endblock %}

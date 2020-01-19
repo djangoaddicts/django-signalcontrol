@@ -28,11 +28,10 @@ setup(
     install_requires=required,
     classifiers=[
         'Environment :: Web Environment',
-        'Framework :: Django :: 2.2.x',
         'Intended Audience :: Developers',
         'Operating System :: OS Independent',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.x',
+        'Framework :: Django :: 2.2',
         'Topic :: Internet :: WWW/HTTP',
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
         'Topic :: Software Development :: Libraries :: Python Modules',

@@ -22,41 +22,41 @@ class ListRecents(LoginRequiredMixin, FilterByQueryParamsMixin, ListView):
     table. This view is filterable via query parameters. Includes links to delete individual entries.
     """
     base_template = settings.BASE_TEMPLATE
+    template = "handyhelpers/generic/generic_list.html"
 
     def get(self, request, *args, **kwargs):
         context = dict()
         self.queryset = UserRecent.objects.filter(user=request.user).order_by('-updated_at')
-        template = "generic/generic_list.html"
         context['base_template'] = self.base_template
         context['queryset'] = self.filter_by_query_params()
         context['title'] = "Recents"
         context['sub_title'] = request.user.username
-        context['table'] = "table/table_recents.htm"
-        return render(request, template, context=context)
+        context['table'] = "userextensions/table/table_recents.htm"
+        return render(request, self.template, context=context)
 
 
 class ListFavorites(LoginRequiredMixin, FilterByQueryParamsMixin, ListView):
     """ Displays a list of urls user has set as favorites, rendered in a paginated, searchable, sortable bootstrap
     table. This view is filterable via query parameters. Includes links to delete individual entries. """
     base_template = settings.BASE_TEMPLATE
+    template = "handyhelpers/generic/generic_list.html"
 
     def get(self, request, *args, **kwargs):
         context = dict()
         self.queryset = UserFavorite.objects.filter(user=request.user).order_by('-updated_at')
-        template = "generic/generic_list.html"
         context['base_template'] = self.base_template
         context['queryset'] = self.filter_by_query_params()
         context['title'] = "Favorites"
         context['sub_title'] = request.user.username
-        context['table'] = "table/table_favorites.htm"
-        return render(request, template, context=context)
+        context['table'] = "userextensions/table/table_favorites.htm"
+        return render(request, self.template, context=context)
 
 
 class DetailUser(LoginRequiredMixin, View):
     """ Displays user details, including group configuration, API token, and configuration for theme, start page, and
     recents count. Includes link to refresh API token and modal form to edit user preferences. """
     base_template = settings.BASE_TEMPLATE
-    template = "detail/detail_user.html"
+    template = "userextensions/detail/detail_user.html"
 
     def get(self, request):
         context = dict()
