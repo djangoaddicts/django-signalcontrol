@@ -1,22 +1,9 @@
 from django.db import models
 
 
-# Create your models here.
-class MyModelOne(models.Model):
-    name = models.CharField(max_length=16)
-
-
-class MyModelTwo(models.Model):
-    name = models.CharField(max_length=16)
-
-
-class MyModelThree(models.Model):
-    name = models.CharField(max_length=16)
-
-
 class SignalControl(models.Model):
     """ table to track status of a signal used in the signal_control decorator """
-    app_name = models.CharField(max_length=32)
+    app_name = models.CharField(max_length=32, unique=True)
     model_name = models.CharField(max_length=128)
     signal_name = models.CharField(max_length=255)
     signal_type = models.CharField(max_length=32)

@@ -12,8 +12,8 @@ with open('requirements.txt') as f:
 version = signalcontrol.__version__
 
 setup(
-    name='django-userextensions',
-    description='A user extension module for django',
+    name='django-signalcontrol',
+    description='A django app to allow dynamic control of signals',
     long_description=README,
     long_description_content_type='text/markdown',
     packages=find_packages(),

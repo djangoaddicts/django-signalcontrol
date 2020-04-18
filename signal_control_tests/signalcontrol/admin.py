@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # import models
-from .models import (SignalControl, MyModelOne, MyModelTwo, MyModelThree)
+from .models import SignalControl
 
 
 def enable(modeladmin, request, queryset):
@@ -10,15 +10,13 @@ def enable(modeladmin, request, queryset):
         item.save()
 
 
-enable.short_description = 'enable signal'
-
-
 def disable(modeladmin, request, queryset):
     for item in queryset:
         item.enabled = False
         item.save()
 
 
+enable.short_description = 'enable signal'
 disable.short_description = 'disable signal'
 
 
@@ -31,6 +29,3 @@ class SignalControlAdmin(admin.ModelAdmin):
 
 # Register your models here.
 admin.site.register(SignalControl, SignalControlAdmin)
-admin.site.register(MyModelOne)
-admin.site.register(MyModelTwo)
-admin.site.register(MyModelThree)
