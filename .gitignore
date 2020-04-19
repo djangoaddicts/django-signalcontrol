@@ -127,3 +127,10 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# intelliJ
+*.idea
+*.iml
+
+
+signal_control_tests/local_test
