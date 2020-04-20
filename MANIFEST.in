@@ -1,4 +1,5 @@
 include README.md
 include requirements.txt
-recursive-exclude MANIFEST.ini
-recursive-exclude signal_control_tests/*
+include setup.py
+graft src/signalcontrol
+global-exclude *.py[co]

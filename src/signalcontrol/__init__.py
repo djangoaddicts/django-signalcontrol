@@ -7,11 +7,11 @@ A user extension module for django.
 """
 
 __title__ = 'django-signalcontrol'
-__version__ = '0.0.1'
+__version__ = '0.0.2'
 __author__ = 'David Slusser'
 __email__ = 'dbslusser@gmail.com'
 __license__ = 'GPL-3.0'
 __copyright__ = 'Copyright 2020 David Slusser'
 
 
-default_app_config = 'signalcontrol.apps.SignalControlConfig'
+default_app_config = 'src.signalcontrol.apps.SignalControlConfig'
