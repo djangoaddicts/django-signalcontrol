@@ -14,4 +14,4 @@ __license__ = 'GPL-3.0'
 __copyright__ = 'Copyright 2020 David Slusser'
 
 
-default_app_config = 'signalcontrol.apps.SignalControlConfig'
+default_app_config = 'src.signalcontrol.apps.SignalControlConfig'

@@ -4,5 +4,5 @@ from django.apps import AppConfig
 
 
 class SignalControlConfig(AppConfig):
-    name = 'signalcontrol'
+    name = 'src.signalcontrol'
     verbose_name = "Signal Control"

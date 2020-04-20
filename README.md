@@ -9,6 +9,8 @@ A django extension for dynamically enabling/disabling model-based signals.
 
 
 # Documentation
+Full documentation can be found on http://django-signalcontrol.readthedocs.org. 
+Documentation source files are available in the docs folder.
 
 
 # Installation
@@ -36,3 +38,4 @@ def msg_my_model_two(sender, instance, created, **kwargs):
     """ some signal """
     print("you just saved an instance of MyCoolModel")
 
+..
