@@ -10,5 +10,6 @@ Contents
 
    about
    installation
+   features
    version_history
    license

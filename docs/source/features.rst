@@ -7,12 +7,22 @@ Features
 This document details the features currently available in django-signalcontrol.
 
 
+Signal Detection
+----------------
+Model signals are detected automatically when django starts. Any model signal with signal_control applied will be
+detected and automatically added (if not already present) in the SignalControl database table. An info message will be
+printed when django starts if a new signal with signal_control is discovered. It will look like this:
 
-signal_control decorator
-------------------------
+``INFO: registering msg_after_my_model_save in demo with SignalControl``
+
+In this example, 'msg_after_my_model_save' is the name of the signal, and 'demo' is the name of the django app.
+
+
+The signal_control Decorator
+----------------------------
 
 SignalControl can be added to a model signal via a provided decorator. In the signal.py file, import the signalcontrol
-decorator and add to the line directly above the signal definition.
+decorator and add the signal_control decorator to the line directly above the signal definition. Example:
 
 .. code-block:: python
 
@@ -20,7 +30,7 @@ decorator and add to the line directly above the signal definition.
 
     @receiver(post_save, sender=MyCoolModel)
     @signal_control
-    def msg_my_model_two(sender, instance, created, **kwargs):
+    def msg_after_my_model_save(sender, instance, created, **kwargs):
         """ some signal """
         print("you just saved an instance of MyCoolModel")
 ..
@@ -34,3 +44,5 @@ An django admin interface for django-signalcontrol is available to set model sig
 displays all model signals that can be controlled, and lists the application, model, signal receiver and signal name.
 Additionally, full search is available and filters are available for each field.
 Signals can be enabled or disabled individually or in bulk.
+
+.. image:: images/django_admin.png
