@@ -4,10 +4,11 @@
 About
 =====
 django-signalcontrol is a reusable django application that adds dynamic control to model signals.
-With signal_control added to a model signal, an entry for the signal is added to the SignalControl table that includes
-a boolean field to enable/disable the signal. An interface in the django admin console is provided to enable or disable
-signals individually or in bulk. When a signal is disabled it will not execute when dispatched through the receiver,
-such as post_save.
+
+
+With signal_control added to a model signal, the signal can by enabled (default) or disabled from the django admin.
+An entry for the signal is added to the SignalControl table that includes a boolean field to enable/disable the signal.
+When a signal is disabled it will not execute when dispatched through the receiver, such as post_save.
 
 See details on django-extensions features on the :ref:`Features <features>` page
 
