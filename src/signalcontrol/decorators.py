@@ -1,6 +1,7 @@
 import linecache
 import re
 from django.apps import apps
+from django.db.utils import OperationalError
 from django.db.models.signals import (post_save, pre_init, post_init, pre_save, pre_delete, post_delete,
                                       m2m_changed, pre_migrate, post_migrate)
 
@@ -25,9 +26,13 @@ def signal_control(func, **kwargs):
                        signal_name=signal_name, signal_type=signal_type_name)
     default_data = dict(app_name=app_name, model_name=model_name,
                         signal_name=signal_name, signal_type=signal_type_name)
-    control_instance, is_new = SignalControl.objects.get_or_create(**lookup_data, defaults=default_data)
-    if is_new:
-        print("INFO: registering {} in {} with SignalControl".format(signal_name, app_name))
+    try:
+        control_instance, is_new = SignalControl.objects.get_or_create(**lookup_data, defaults=default_data)
+        if is_new:
+            print('INFO: registering {} in {} with SignalControl'.format(signal_name, app_name))
+    except OperationalError:
+        'The SignalControl table does not exist yet so signal entries can not be made'
+        pass
 
     def signal_control_wrapper(*args, **kwargs):
         signal_name_dict = {
