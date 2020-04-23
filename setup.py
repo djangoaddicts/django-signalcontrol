@@ -1,6 +1,6 @@
 import os
 from setuptools import setup
-import signalcontrol
+from src import signalcontrol
 
 with open(os.path.join(os.path.dirname(__file__), 'README.md'), encoding='utf-8') as readme:
     README = readme.read()
@@ -15,7 +15,8 @@ setup(
     description='A django app to allow dynamic control of signals',
     long_description=README,
     long_description_content_type='text/markdown',
-    packages=['signalcontrol'],
+    packages=['signalcontrol', 'signalcontrol.migrations'],
+    package_dir={'': 'src'},
     version=version,
     license=signalcontrol.__license__,
     author=signalcontrol.__author__,
