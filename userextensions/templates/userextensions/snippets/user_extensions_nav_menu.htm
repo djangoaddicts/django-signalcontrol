@@ -6,6 +6,7 @@ To use this, add the following in your navbar where appropriate:
     {% include 'snippits/user_theme.htm' %}
 
 {% endcomment %}
+{% load userextension_tags %}
 
 <a class="dropdown-item" href="{% url 'userextensions:detail_user' %}"><i class="fa fa-address-card fw mr-3"></i>Profile</a>
 <a class="dropdown-item" href="#"><b class="fa fa-cogs fw mr-3 text-greyout"></b>Settings</a>
