@@ -9,19 +9,19 @@ This document details the features currently available in django-signalcontrol.
 
 Signal Detection
 ----------------
-Model signals are detected automatically when django starts. Any model signal with signal_control applied will be
-detected and automatically added (if not already present) in the SignalControl database table. An info message will be
-printed when django starts if a new signal with signal_control is discovered. It will look like this:
+Signals are scanned automatically when django starts. Any signal with signal_control applied will be detected and
+automatically added (if not already present) in the SignalControl database table. An info message will be printed
+when django starts if a new signal with signal_control is discovered. It will look like this:
 
-``INFO: registering msg_after_my_model_save in demo with SignalControl``
+``INFO: registering msg_after_my_model_save in my_app with SignalControl``
 
-In this example, 'msg_after_my_model_save' is the name of the signal, and 'demo' is the name of the django app.
+In this example, 'msg_after_my_model_save' is the name of the signal, and 'my_app' is the name of the django app.
 
 
 The signal_control Decorator
 ----------------------------
 
-SignalControl can be added to a model signal via a provided decorator. In the signal.py file, import the signalcontrol
+SignalControl can be added to a signal with the provided decorator. In the signals.py file, import the signalcontrol
 decorator and add the signal_control decorator to the line directly above the signal definition. Example:
 
 .. code-block:: python
@@ -40,8 +40,8 @@ decorator and add the signal_control decorator to the line directly above the si
 Admin Interface
 ---------------
 
-An django admin interface for django-signalcontrol is available to set model signals to enabled or disabled. This
-displays all model signals that can be controlled, and lists the application, model, signal receiver and signal name.
+An django admin interface for django-signalcontrol is available to set signals to enabled or disabled. This displays
+all model signals that can be controlled, and lists the application, model, signal receiver and signal name.
 Additionally, full search is available and filters are available for each field.
 Signals can be enabled or disabled individually or in bulk.
 

@@ -133,4 +133,4 @@ dmypy.json
 *.iml
 
 
-signal_control_tests/local_test
+src/signal_control_tests/local_test
