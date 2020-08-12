@@ -3,7 +3,7 @@
 """
 from django.db import models
 from django.contrib.auth.models import User
-from djangohelpers.managers import HandyHelperModelManager
+from handyhelpers.managers import HandyHelperModelManager
 
 
 class UserExtensionBaseModel(models.Model):

@@ -6,7 +6,7 @@ from django.shortcuts import redirect, render, reverse
 from django.conf import settings
 from django.contrib import messages
 from django.views.generic import (View, ListView)
-from djangohelpers.views import FilterByQueryParamsMixin
+from handyhelpers.mixins.view_mixins import FilterByQueryParamsMixin
 from braces.views import LoginRequiredMixin
 from rest_framework.authtoken.models import Token
 
