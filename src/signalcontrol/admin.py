@@ -27,5 +27,5 @@ class SignalControlAdmin(admin.ModelAdmin):
     actions = [enable, disable]
 
 
-# Register your models here.
+# Register models
 admin.site.register(SignalControl, SignalControlAdmin)

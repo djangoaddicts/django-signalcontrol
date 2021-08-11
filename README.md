@@ -1,13 +1,12 @@
 # django-signalcontrol
-A django extension for dynamically enabling/disabling signals. This application allows django signals to be disabled or
-enabled on-demand through the django admin interface. 
+A django extension for dynamically enabling/disabling signals. This application allows django signals to be disabled or enabled on-demand through the django admin interface. 
 
 
 | | |
 |--------------|------|
 | Author       | David Slusser |
 | Description  | A django extension for dynamically enabling/disabling signals. |
-| Requirements | `Python 3.x`<br>`Django 2.2.x` |
+| Requirements | `Python 3.x`<br>`Django>=2.2.x` |
 
 
 # Documentation
@@ -44,6 +43,6 @@ Signals can be enabled or disabled individually or in bulk.
     @signal_control
     def msg_after_my_model_save(sender, instance, created, **kwargs):
         """ some signal """
-        print("you just saved an instance of MyCoolModel")
+        print('you just saved an instance of MyCoolModel')
 ```
 

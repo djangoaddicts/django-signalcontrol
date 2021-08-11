@@ -17,7 +17,7 @@ See details on django-extensions features on the :ref:`Features <features>` page
 Requirements & Dependencies
 ---------------------------
 
-django-signalcontrol is built on Python 3.6.x and Django 2.2.x. For a full list of packages and requirements, please
+django-signalcontrol is built on Python 3.x and Django=> 2.2. For a full list of packages and requirements, please
 see the requirements.txt file.
 
 https://github.com/davidslusser/django-signalcontrol/blob/master/requirements.txt
