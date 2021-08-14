@@ -41,5 +41,5 @@ decorator and add the signal_control decorator to the line directly above the si
     @signal_control
     def msg_after_my_model_save(sender, instance, created, **kwargs):
         """ some signal """
-        print("you just saved an instance of MyCoolModel")
+        print('you just saved an instance of MyCoolModel')
 ..

@@ -10,7 +10,7 @@ class SignalControl(models.Model):
     enabled = models.BooleanField(default=True)
 
     class Meta:
-        db_table = "signalcontrol"
+        db_table = 'signalcontrol'
         unique_together = (('app_name', 'signal_name', 'signal_type'), )
 
     def __unicode__(self):
