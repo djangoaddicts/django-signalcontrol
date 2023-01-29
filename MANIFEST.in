@@ -1,3 +1,17 @@
-include README.md
-include requirements.txt
-global-exclude *.py[co]
+# Include the README
+include *.md
+
+# Include setup.py
+include setup.py
+include setup.cfg
+
+# Include the src files
+recursive-include src *
+
+# Exclude test files
+exclude manage.py
+recursive-exclude test *
+
+# Exclude local_project
+exclude src/local_projects
+exclude src/manage.py
