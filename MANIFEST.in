@@ -1,17 +1,20 @@
-# Include the README
-include *.md
-
-# Include setup.py
-include setup.py
-include setup.cfg
+recursive-exclude *
+include pyproject.toml
 
 # Include the src files
-recursive-include src *
+recursive-include src/djangoaddicts/signalcontrol
 
-# Exclude test files
-exclude manage.py
-recursive-exclude test *
+exclude src/__version__.py
+exclude src/djangoaddicts/manage.py
 
-# Exclude local_project
-exclude src/local_projects
-exclude src/manage.py
+recursive-exclude docs *
+recursive-exclude tests *
+recursive-exclude local_test *
+recursive-exclude .github *
+recursive-exclude src/*.egg-info
+recursive-exclude src/djangoaddicts/core *
+
+global-exclude */__pycache__/*
+global-exclude *.pyc
+global-exclude *.sqlite3
+
