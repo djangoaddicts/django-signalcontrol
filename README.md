@@ -15,7 +15,7 @@ Django signalcontrol is a django extension for dynamically enabling/disabling si
 |Bandit|security checks|![Bandit](https://github.com/djangoaddicts/django-signalcontrol/actions/workflows/bandit.yaml/badge.svg)|
 |Black|code formatting|![Black](https://github.com/djangoaddicts/django-signalcontrol/actions/workflows/black.yaml/badge.svg)|
 |CodeQL|security analysis|[![CodeQL](https://github.com/djangoaddicts/django-signalcontrol/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/djangoaddicts/django-signalcontrol/actions/workflows/github-code-scanning/codeql)|
-|Coveralls|code coverage status|[![Coverage Status](https://coveralls.io/repos/github/djangoaddicts/django-signalcontrol/badge.svg)](https://coveralls.io/github/djangoaddicts/django-signalcontrol)|
+|Coveralls|code coverage status|![Coveralls](https://github.com/djangoaddicts/django-signalcontrol/actions/workflows/coveralls.yaml/badge.svg)|
 |Isort|python import ordering|![Isort](https://github.com/djangoaddicts/django-signalcontrol/actions/workflows/isort.yaml/badge.svg)|
 |Mypy|static type checking|![Mypy](https://github.com/djangoaddicts/django-signalcontrol/actions/workflows/mypy.yaml/badge.svg)|
 |Pytest|unit testing|![Pytest](https://github.com/djangoaddicts/django-signalcontrol/actions/workflows/pytest.yaml/badge.svg)|
@@ -25,13 +25,19 @@ Django signalcontrol is a django extension for dynamically enabling/disabling si
 
 <br/>
 
-### Code Coverage Dashboard:
+### Code Coverage 
+[![Coverage Status](https://coveralls.io/repos/github/djangoaddicts/django-signalcontrol/badge.svg)](https://coveralls.io/github/djangoaddicts/django-signalcontrol)
+
+Dashboard:
 https://coveralls.io/github/djangoaddicts/django-signalcontrol
 
 <br/>
 
 ## Documentation
+[![Documentation Status](https://readthedocs.org/projects/django-signalcontrol/badge/?version=latest)](https://django-signalcontrol.readthedocs.io/en/latest/?badge=latest)
+
 Full documentation can be found on http://django-signalcontrol.readthedocs.org. 
+
 Documentation source files are available in the docs folder.
 
 <br/>
