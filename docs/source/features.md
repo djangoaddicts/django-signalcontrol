@@ -36,5 +36,6 @@ An django admin interface for django-signalcontrol is available to set signals t
 
 ```{image} images/django_admin.png
 :alt: Django admin interface
+```
 
 <br/>
