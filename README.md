@@ -23,7 +23,6 @@ Django signalcontrol is a django extension for dynamically enabling/disabling si
 |Ruff|static code analysis|![Ruff](https://github.com/djangoaddicts/django-signalcontrol/actions/workflows/ruff.yaml/badge.svg)|
 |Safety|dependency scanner|![Saftey](https://github.com/djangoaddicts/django-signalcontrol/actions/workflows/safety.yaml/badge.svg)|
 
-<br/>
 
 ### Code Coverage 
 [![Coverage Status](https://coveralls.io/repos/github/djangoaddicts/django-signalcontrol/badge.svg)](https://coveralls.io/github/djangoaddicts/django-signalcontrol)
@@ -45,7 +44,7 @@ Documentation source files are available in the docs folder.
 ## License
 django-signalcontrol is licensed under the GNU-3 license (see the LICENSE file for details).
 
-https://github.com/djangoaddicts/django-signalcontrol/blob/docs/LICENSE 
+https://github.com/djangoaddicts/django-signalcontrol/blob/main/LICENSE
 
 <br/>
 
